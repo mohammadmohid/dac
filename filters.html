@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAC | Filters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./filter.css">
+</head>
+<body>
+    <div class="top-nav">
+        <a href="#"><img class="logo" src="./assets/Logo.svg" alt="DAC Logo"></a>
+    </div>
+    <div class="filters-page">
+        <header>
+            <button class="back-button"><img src="assets/back.svg" alt=""></button>
+            <h1>Filters</h1>
+        </header>
+        <form class="filters-form" target="_self" action="./search.html">
+            <div class="filter-item">
+                <select id="category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="job">Job</option>
+                    <option value="event">Event</option>
+                    <option value="internship">Internship</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <select id="experience-level">
+                    <option value="" disabled selected>Experience level</option>
+                    <option value="job">Entry Level (1-2 years)</option>
+                    <option value="event">Mid Level (2-4 years)</option>
+                    <option value="internship">Expert Level (5+ years)</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <select id="industry">
+                    <option value="" disabled selected>Industry</option>
+                    <option value="game-development">Game Development</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="ai">Artificial Intelligence</option>
+                    <option value="data-science">Data Science</option>
+                    <option value="cyber-security">Cyber Security</option>
+                    <option value="software-engineering">Software Engineering</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <select id="location">
+                    <option value="" disabled selected>Location</option>
+                    <option value="pindi">Rawalpindi</option>
+                    <option value="islamabad">Islamabad</option>
+                    <option value="karachi">Karachi</option>
+                    <option value="lahore">Lahore</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <select id="popularity">
+                    <option value="" disabled selected>Popularity</option>
+                    <!-- Options here -->
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="salary-range">Salary Range</label>
+                <div class="salary-range">
+                    <input type="number" id="min-salary" placeholder="Min" min="0">
+                    <span>-</span>
+                    <input type="number" id="max-salary" placeholder="Max">
+                </div>
+            </div>
+            <button type="submit" class="search-button"><img src="./assets/search.svg" alt=""></button>
+        </form>
+    </div>
+</body>
+</html>

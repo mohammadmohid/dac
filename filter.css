@@ -1,0 +1,107 @@
+:root {
+    --dark-color: #111738;
+    --dark-sub-color: #A0A2AF;
+    --gradient-color: linear-gradient(90deg, rgba(97,0,255,1) 0%, rgba(173,0,255,1) 100%);
+    --font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: #f5f5f5;
+}
+
+.top-nav {
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.filters-page {
+    width: 90vw;
+    margin: 25px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 24px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0 20px;
+    color: var(--dark-color);
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+.filters-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item {
+    margin-bottom: 15px;
+}
+
+.filter-item label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.filter-item select,
+.salary-range input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.salary-range {
+    display: flex;
+    align-items: center;
+}
+
+.salary-range input {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.salary-range span {
+    flex-shrink: 0;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.search-button {
+    padding: 10px;
+    background: var(--gradient-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
