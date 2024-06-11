@@ -5,9 +5,10 @@ import Logo from '../../assets/Logo.svg';
 import GoogleLogo from '../../assets/Google.svg';
 import { useToast } from '../../components/ToastManager';
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('Teacher');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { addToast } = useToast();
@@ -17,14 +18,13 @@ const Login = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
-      addToast('Signed in successfully', 'success');
+      await axios.post('http://localhost:5000/api/auth/register', { email, password, userType }, { withCredentials: true });
+      addToast('User created successfully', 'success');
       navigate('/home');
     } catch (err) {
       if (err.response && err.response.data) {
         setError(err.response.data.error);
       } else {
-        setError('An unexpected error occurred');
         addToast('An unexpected error occurred', 'error');
       }
     }
@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center max-w-md p-6 mx-auto mt-10 mb-10 bg-slate-900 rounded shadow-xl">
       <Link to="/"><img src={Logo} alt="DAC Logo" className="mb-4"/></Link>
-      <h2 className="mb-2 text-2xl text-primary font-bold">Good to have you back!</h2>
+      <h2 className="mb-2 text-2xl text-primary font-bold">Create an account</h2>
       <form onSubmit={handleSubmit} className="w-full">
         <div className="form-control w-full mb-4">
           <label className="label" htmlFor="email">
@@ -63,24 +63,44 @@ const Login = () => {
             className="input input-bordered w-full"
           />
         </div>
-        {error && <p className="text-red-600 font-medium mb-4">{error}</p>}
+        <div className="form-control w-full mb-4">
+          <label className="label" htmlFor="userType">
+            <span className="label-text">User Type</span>
+          </label>
+          <select
+            id="userType"
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
+            className="select select-bordered w-full"
+          >
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <button type="submit" className="btn btn-primary w-full mb-4">
-          Sign in
+          Sign up with email
         </button>
       </form>
       <div className="flex items-center w-full mb-4">
-        <div className="mx-auto">or continue with</div>
+        <div className="divider">or continue with</div>
       </div>
       <button className="btn btn-outline w-full mb-4">
         <img src={GoogleLogo} alt="Google Logo" className="mr-2" />
         Google
       </button>
-      <div className="flex gap-3 mt-4">
-        <Link to="/register" className="link link-primary">Create account</Link>
-        <Link to="#" className="link link-primary">Forgot password?</Link>
-      </div>
+      <p className="text-base-content/70 text-center">
+        By clicking continue, you agree to our{' '}
+        <Link to="#" className="link link-primary">Terms of Service</Link> and{' '}
+        <Link to="#" className="link link-primary">Privacy Policy</Link>
+      </p>
+      <p className="mt-4 text-base-content/70">
+        Already have an account? <Link to="/login" className="link link-primary">Sign in.</Link>
+      </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;

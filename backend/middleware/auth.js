@@ -1,8 +1,7 @@
-// auth.js middleware
 const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies.token || req.headers['x-access-token'];
   if (!token) return res.status(401).json({ message: 'Access denied' });
 
   try {
