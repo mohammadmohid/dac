@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/auth/check-auth', { withCredentials: true });
+        const response = await axios.get('https://dac-server.vercel.app/api/auth/check-auth', { withCredentials: true });
         setCurrentUser(response.data.user);
       } catch (err) {
         console.error(err);
@@ -19,7 +19,7 @@ const Home = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/auth/user-activity-logs', { withCredentials: true });
+        const response = await axios.get('https://dac-server.vercel.app/api/auth/user-activity-logs', { withCredentials: true });
         setUsers(response.data);
       } catch (error) {
         console.error('Failed to fetch users:', error);
@@ -32,7 +32,7 @@ const Home = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/admin/delete-user/${userId}`, { withCredentials: true });
+      await axios.delete(`https://dac-server.vercel.app/api/admin/delete-user/${userId}`, { withCredentials: true });
       addToast('User deleted successfully', 'success');
       setUsers(users.filter(user => user._id !== userId));
     } catch (err) {

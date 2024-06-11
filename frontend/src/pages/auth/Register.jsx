@@ -18,7 +18,7 @@ const Register = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { email, password, userType }, { withCredentials: true });
+      await axios.post('https://dac-server.vercel.app/api/auth/register', { email, password, userType }, { withCredentials: true });
       addToast('User created successfully', 'success');
       navigate('/home');
     } catch (err) {

@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/auth/check-auth', { withCredentials: true });
+        const response = await axios.get('https://dac-server.vercel.app/api/auth/check-auth', { withCredentials: true });
         setUser(response.data.user);
       } catch (err) {
         console.error(err);
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      await axios.delete('http://localhost:5000/api/auth/delete-account', { withCredentials: true });
+      await axios.delete('https://dac-server.vercel.app/api/auth/delete-account', { withCredentials: true });
       addToast('Account deleted successfully', 'success');
       navigate('/register');
     } catch (err) {
@@ -34,7 +34,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+      await axios.post('https://dac-server.vercel.app/api/auth/logout', {}, { withCredentials: true });
       addToast('Logged out successfully', { appearance: 'success' });
       navigate('/login'); // Redirect to Login page
     } catch (error) {

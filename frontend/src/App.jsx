@@ -15,7 +15,7 @@ const ProtectedRoute = ({ element: Element, ...rest }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await axios.get('http://localhost:5000/api/auth/check-auth', { withCredentials: true });
+        await axios.get('https://dac-server.vercel.app/api/auth/check-auth', { withCredentials: true });
         setIsAuthenticated(true);
       } catch (err) {
         setIsAuthenticated(false);

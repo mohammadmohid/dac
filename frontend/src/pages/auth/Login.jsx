@@ -17,7 +17,7 @@ const Login = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
+      await axios.post('https://dac-server.vercel.app/api/auth/login', { email, password }, { withCredentials: true });
       addToast('Signed in successfully', 'success');
       navigate('/home');
     } catch (err) {
