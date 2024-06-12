@@ -37,7 +37,6 @@ router.post('/login', async (req, res) => {
     
     // Log login activity
     await logActivity(user._id, 'User logged in');
-    https://digitalalumniconnecter.vercel.app
     res.cookie('token', token, { httpOnly: true }).json({ token });
   } catch (err) {
     console.error('Error during user login:', err);
