@@ -13,9 +13,8 @@ app.use(helmet());
 
 // Configure CORS
 app.use(cors({
-  origin: 'https://digitalalumniconnecter.vercel.app',
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: 'https://digitalalumniconnecter.vercel.app'
 }));
 
 app.use(express.json());
