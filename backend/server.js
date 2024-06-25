@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -11,7 +10,15 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: 'https://digitalalumniconnecter.vercel.app', credentials: true })); 
+
+// Configure CORS
+app.use(cors({
+  origin: 'https://digitalalumniconnecter.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -22,6 +29,9 @@ const adminRoutes = require('./routes/admin');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Error handling middleware
 app.use((err, req, res, next) => {
