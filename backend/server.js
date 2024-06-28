@@ -40,8 +40,8 @@ app.use((err, req, res, next) => {
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Database connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
   .catch(err => console.error(`Database connection error: ${err.message}`));
 
-  module.exports = app;
+module.exports = app;
