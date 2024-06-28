@@ -37,8 +37,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal server error' });
 });
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 // Database connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
